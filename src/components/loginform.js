@@ -65,7 +65,7 @@ function LoginForm(props) {
                 </div>
                 <div className='pword-fields'>
                     <label htmlFor="pword"><b>Password</b></label>
-                    <input type="text" placeholder='Password' name="pword" required></input>
+                    <input type="password" placeholder='Password' name="pword" required></input>
                 </div>
                 <button className="login-button" type='submit'>Login</button>
             </form>
@@ -121,10 +121,10 @@ function SignUpForm(props) {
                 </div>
                 <div className='pword-fields'>
                     <label htmlFor="pword"><b>Password</b></label>
-                    <input type="text" placeholder='Password' name="pword" required></input>
+                    <input type="password" placeholder='Password' name="pword" required></input>
                 </div>
                 <div className='rpword-fields'>
-                    <input type="text" placeholder='Repeat Password' name="rpword" required></input>
+                    <input type="password" placeholder='Repeat Password' name="rpword" required></input>
                 </div>
                 <button className="login-button" type='submit'>Signup</button>
             </form>

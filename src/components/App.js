@@ -20,20 +20,20 @@ function App() {
       if (currentSelected === "My Posts") {
         let response = await fetch(`http://localhost:3000/posts/${currentUser.username}`)
         response = await response.json()
-        setCurrentSelected("My Posts")
+        // setCurrentSelected("My Posts")
         setPosts(response.posts)
       }
     } catch (err) {
       console.log(err)
     }
-  }, [currentSelected])
+  })
   return (
     <div className="App">
       <Topbar/>
       <div className="leftside-content">
         <SideMenu currentSelected={currentSelected} setCurrentSelected={setCurrentSelected} currentUser={currentUser} loginPopupOpen={loginPopupOpen} setLoginPopupOpen={setLoginPopupOpen}/>
       </div>
-      <ContentBox posts={posts}/>
+      <ContentBox posts={posts} currentSelected={currentSelected} setCurrentSelected={setCurrentSelected} currentUser={currentUser}/>
       <LoginPopup isOpen={loginPopupOpen} setLoginPopupOpen={setLoginPopupOpen} setCurrentUser={setCurrentUser} setCurrentSelected={setCurrentSelected}/>
     </div>
   );

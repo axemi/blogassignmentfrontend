@@ -1,7 +1,7 @@
 import '../styles/App.css';
 import React from "react"
 function SideMenu({loginPopupOpen,setLoginPopupOpen, currentUser, currentSelected, setCurrentSelected}) {
-    let buttonNames = ["Browse", "My Posts"]
+    let buttonNames = ["Browse", "My Posts", "Create Post"]
     const handleLoginButtonClick = () => {
         loginPopupOpen === true ? setLoginPopupOpen(false) : setLoginPopupOpen(true)
     }

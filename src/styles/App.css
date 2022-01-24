@@ -33,7 +33,7 @@
 }
 
 .sidemenu-button {
-  font-size: 25px;
+  font-size: 1em;
   margin-bottom: 10px;
   background: transparent;
   border-style: none;
@@ -44,7 +44,7 @@
   margin: 0px;
 }
 .sidemenu-button-selected {
-  font-size: 25px;
+  font-size: 1em;
   margin-bottom: 10px;
   background-color: black;
   border-radius: 5px;
@@ -64,12 +64,15 @@
 .login-popup {
   background-color: rgb(216, 216, 216);
   border-radius: 5px;
-  margin-top: 10%;
-  height: 30%;
-  width: 30%;
+  margin-top: 5%;
+  height: auto;
+  max-height: 70%;
+  width: auto;
+  max-height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
 }
 
 .login-popup-close {
@@ -104,6 +107,8 @@
 
 .login-popup-tabs {
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
 .login-popup-tabs * {
