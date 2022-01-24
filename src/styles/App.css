@@ -1,0 +1,124 @@
+.App {
+  background-color: white;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "topbar topbar topbar"
+                        "leftside contentbox .";
+}
+
+.leftside-content {
+  grid-area: leftside;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.sidemenu-container {
+  position: fixed;
+  height: 100%;
+  width: 125px;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.sidemenu-divider {
+  border: 1px solid black;
+  margin: 10px;
+  margin-left: 0;
+  width: 100%;
+}
+
+.sidemenu-button {
+  font-size: 25px;
+  margin-bottom: 10px;
+  background: transparent;
+  border-style: none;
+  cursor: pointer;
+}
+
+.sidemenu-login-button {
+  margin: 0px;
+}
+.sidemenu-button-selected {
+  font-size: 25px;
+  margin-bottom: 10px;
+  background-color: black;
+  border-radius: 5px;
+  border-style: none;
+  color: white;
+  cursor: pointer;
+}
+.login-popup-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+.login-popup {
+  background-color: rgb(216, 216, 216);
+  border-radius: 5px;
+  margin-top: 10%;
+  height: 30%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-popup-close {
+  color: black;
+  float: right;
+  margin-right: 5px;
+  font-weight: bold;
+  cursor:pointer;
+}
+.login-popup-header {
+  display: flex;
+  align-self: flex-end;
+}
+
+.login-form, .username-fields, .pword-fields, .rpword-fields{
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form *, .signup-form * {
+  margin-bottom: 10px;
+}
+
+.login-button {
+  background-color: black;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor:pointer;
+}
+
+.login-popup-tabs {
+  margin-bottom: 10px;
+}
+
+.login-popup-tabs * {
+  margin: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.login-popup-tab-selected {
+  border-bottom: 2px solid black;
+}
+
+.login-form-error {
+  color: red;
+}

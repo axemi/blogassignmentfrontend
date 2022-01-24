@@ -1,0 +1,53 @@
+.contentbox {
+    display: flex;
+    flex-direction: column;
+    width: 42vw;
+    height: 100%;
+    align-items: center;
+    grid-area: contentbox;
+}
+
+.postbox {
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: black;
+    height: auto;
+    width: 40vw;
+    color: white;
+    text-align: left;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.postboxTitle, .full-postboxTitle {
+    margin-top: 15px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.postboxBody, .full-postboxBody {
+    margin-top: 15px;
+    margin-left: 20px;
+    overflow-wrap: break-word;
+}
+
+.postboxAuthor, .full-postboxAuthor {
+    margin-left: 20px;
+    vertical-align: bottom;
+    color: gray;
+}
+
+.full-postbox {
+    background-color: white;
+    color: black;
+    height: auto;
+    width: 40vw;
+    margin: 5px;
+    text-align: left;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
