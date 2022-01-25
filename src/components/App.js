@@ -14,7 +14,6 @@ function App() {
   const [posts, setPosts] = React.useState([])
   useEffect(async () => {
     try {
-      console.log(BACKEND_URL)
       if (currentSelected === "Browse") {
         let response = await fetch(`${BACKEND_URL}/posts`)
         response = await response.json()
