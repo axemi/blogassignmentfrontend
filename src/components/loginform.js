@@ -1,5 +1,6 @@
 import '../styles/App.css';
 import React from "react"
+import {BACKEND_URL} from "../utils"
 function LoginPopup(props) {
     const [tabSelected, setTabSelected] = React.useState("Login Existing User")
     let isOpen = props.isOpen
@@ -33,7 +34,7 @@ function LoginForm(props) {
     const onLoginSubmit = async event => {
         event.preventDefault()
         try {
-            let response = await fetch("http://localhost:3000/login", {
+            let response = await fetch(`${BACKEND_URL}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -83,7 +84,7 @@ function SignUpForm(props) {
             return false
         }
         try {
-            let response = await fetch("http://localhost:3000/users", {
+            let response = await fetch(`${BACKEND_URL}/users`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

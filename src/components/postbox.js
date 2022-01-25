@@ -1,6 +1,7 @@
 import '../styles/contentbox.css'
 import React from "react"
-function Postbox({postid, title, body, authorid, setSelectedPostId, setFullPostboxPopupOpen}) {
+import {BACKEND_URL} from "../utils"
+function Postbox({postid, title, body, authorid, author, setSelectedPostId, setFullPostboxPopupOpen}) {
     const onClick = () => {
         console.log(postid)
         setSelectedPostId(postid)
@@ -11,13 +12,13 @@ function Postbox({postid, title, body, authorid, setSelectedPostId, setFullPostb
             <div className="postbox" onClick={onClick}>
                 <div className="postboxTitle">{title}</div>
                 {body.length >= 100 ? <div className="postboxBody">{body.slice(0, 100) + "..."}</div> : <div className="postboxBody">{body}</div>}
-                <div className="postboxAuthor">by {authorid}</div>
+                <div className="postboxAuthor">by {author}</div>
             </div>
         </div>
     )
 }
 
-export function FullPostbox({postid, title, body, authorid, setFullPostboxPopupOpen, currentUser, setCurrentSelected}) {
+export function FullPostbox({postid, title, body, authorid, author, setFullPostboxPopupOpen, currentUser, setCurrentSelected}) {
     //edit mode state updated by edit button
     const [editMode, setEditMode] = React.useState(false)
     const onEditClick = event => {
@@ -27,7 +28,7 @@ export function FullPostbox({postid, title, body, authorid, setFullPostboxPopupO
         event.preventDefault()
         try {
             //post to api/posts
-            let response = await fetch("http://localhost:3000/posts", {
+            let response = await fetch(`${BACKEND_URL}/posts`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -62,12 +63,12 @@ export function FullPostbox({postid, title, body, authorid, setFullPostboxPopupO
                     {/* <span className="login-popup-close" onClick={onEditClick}>Edit</span> */}
                     {/* <span className="login-popup-close" onClick={onDeleteClick}>Delete</span> */}
                 </div>
-                {editMode === true ? <EditPostBox currentUser={currentUser} postid={postid} title={title} body={body} authorid={authorid} setEditMode={setEditMode}/> 
+                {editMode === true ? <EditPostBox currentUser={currentUser} postid={postid} title={title} body={body} authorid={authorid} setEditMode={setEditMode} setFullPostboxPopupOpen={setFullPostboxPopupOpen}/> 
                 :
                 <div>
                     <div className="full-postboxTitle">{title}</div>
                     <div className="full-postboxBody">{body}</div>
-                    <div className="full-postboxAuthor">by {authorid}</div>
+                    <div className="full-postboxAuthor">by {author}</div>
                 </div>
                 }   
             </div>
@@ -75,13 +76,13 @@ export function FullPostbox({postid, title, body, authorid, setFullPostboxPopupO
     )
 }
 
-function EditPostBox({postid, title, body, currentUser, setEditMode, authorid}) {
+function EditPostBox({postid, title, body, currentUser, setEditMode, authorid, setFullPostboxPopupOpen}) {
     //onSave - put to /posts
     const onSave = async event => {
         event.preventDefault()
         try {
             //post to api/posts
-            let response = await fetch("http://localhost:3000/posts", {
+            let response = await fetch(`${BACKEND_URL}/posts`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -97,7 +98,7 @@ function EditPostBox({postid, title, body, currentUser, setEditMode, authorid}) 
             })
             if (response.status === 200) {
                 setEditMode(false)
-                // setCurrentSelected("My Posts")
+                setFullPostboxPopupOpen(false)
             }
         } catch(err) {
             console.log(err)
@@ -126,7 +127,7 @@ export function CreateNewPostbox({currentUser, setCurrentSelected}) {
         event.preventDefault()
         try {
             //post to api/posts
-            let response = await fetch("http://localhost:3000/posts", {
+            let response = await fetch(`${BACKEND_URL}/posts`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
